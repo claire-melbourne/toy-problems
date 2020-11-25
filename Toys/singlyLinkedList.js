@@ -125,26 +125,20 @@ class SinglyLinkedList {
   }
 
   reverse() {
-    if (this.length === 0) {
-      return this;
-    }
-    if (this.head === this.tail) {
-      return this;
-    }
-    let node = this.head;
-    this.head = this.tail;
-    this.tail = node;
-    let prev = null;
-    let next;
-    for (var i = 0; i < this.length; i ++) {
-      next = node.next;
-      node.next = prev;
-      prev = node;
-      node = next;
+    if (this.length > 1) {
+      let node = this.head;
+      this.head = this.tail;
+      this.tail = node;
+      let prev = null;
+      let next;
+      for (var i = 0; i < this.length; i++) {
+        next = node.next;
+        node.next = prev;
+        prev = node;
+        node = next;
+      }
     }
     return this;
-    //
-
   }
 }
 
