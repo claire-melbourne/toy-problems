@@ -123,6 +123,29 @@ class SinglyLinkedList {
     this.length -= 1;
     return nodeToRemove;
   }
+
+  reverse() {
+    if (this.length === 0) {
+      return this;
+    }
+    if (this.head === this.tail) {
+      return this;
+    }
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    let prev = null;
+    let next;
+    for (var i = 0; i < this.length; i ++) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+    return this;
+    //
+
+  }
 }
 
 var listTest = new SinglyLinkedList();
@@ -130,12 +153,13 @@ listTest.push(5);
 listTest.push(6);
 listTest.push(7);
 listTest.unshift(4);
-listTest.get(2);
-listTest.set(3, 'cow');
-listTest.insert(4, 'horse')
-listTest.insert(0, 'pig');
-listTest.insert(2, 'sheep');
-listTest.remove(0);
-listTest.remove(5);
-listTest.remove(9);
-listTest.remove(3);
+// listTest.get(2);
+// listTest.set(3, 'cow');
+// listTest.insert(4, 'horse')
+// listTest.insert(0, 'pig');
+// listTest.insert(2, 'sheep');
+// listTest.remove(0);
+// listTest.remove(5);
+// listTest.remove(9);
+// listTest.remove(3);
+listTest.reverse();
